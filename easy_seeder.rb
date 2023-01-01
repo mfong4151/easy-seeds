@@ -56,7 +56,7 @@ class EasySeeds
     
     
     def self.type_conversion(datum, data_type = 'string')
-      if ['text', 'string'].include?(data_type)
+      if ['text', 'string', 's'].include?(data_type)
         return datum.to_s
       
       elsif ['int', 'integer', 'i'].include?(data_type)
@@ -74,7 +74,8 @@ class EasySeeds
         
         all_seed_data = []
         table_strings = []
-        seed_folder = './seed_files'
+        seed_folder = './db/seed_files'
+        
 
         
         Dir.chdir(seed_folder)
@@ -91,7 +92,7 @@ class EasySeeds
             
                 row.each_with_index do |col, i|
                     
-                key = clean_headers(headers[i])
+                key = EasySeeds.clean_headers(headers[i])
                 datum[key[0]] = type_conversion(row[i], key[1])
                 
                 end
@@ -100,7 +101,7 @@ class EasySeeds
             end
             
             
-            table_strings << seed_file[seed_file.index('_')...seed_file.index('_seed.csv')]
+            table_strings << seed_file[seed_file.index('_') + 1..-11]
             all_seed_data << seed_res
         end
         
@@ -114,11 +115,9 @@ class EasySeeds
         puts "LOOK AT ME, I'M RUBY, THE LANGUAGE THAT PRETENDS TO HAVE ENCAPSULATION"
     end
 
-    private
+    protected
 
-    ##Look at me im pretending to have encapsulation!
-
-    def clean_headers(header)
+    def self.clean_headers(header)
         if header.include?(":")
           first, second, = header.split(":")
           header_and_type = [first.downcase, second]
@@ -133,28 +132,28 @@ end
       
       
 
-#example from my test own project
+# #example from my test own project
 
-menu_items =  [{item_name: 'Ha Tien Special Extra Large Combo Noodle Soup', menu_id: 1, price: 19.25, image: ''}, 
-                {item_name: 'Combo Beef Noodle Soup', menu_id: 1, price: 16.75, image: ''}, 
-                {item_name: 'Rare Beef', menu_id: 1, price: 16.75, image: ''}, 
-                {item_name: 'Beef Meatball', menu_id: 1, price: 16.75, image: ''}, 
-                {item_name: 'Rare Beef with Chicken', menu_id: 1, price: 16.75, image: ''}
-            ]
+# menu_items =  [{item_name: 'Ha Tien Special Extra Large Combo Noodle Soup', menu_id: 1, price: 19.25, image: ''}, 
+#                 {item_name: 'Combo Beef Noodle Soup', menu_id: 1, price: 16.75, image: ''}, 
+#                 {item_name: 'Rare Beef', menu_id: 1, price: 16.75, image: ''}, 
+#                 {item_name: 'Beef Meatball', menu_id: 1, price: 16.75, image: ''}, 
+#                 {item_name: 'Rare Beef with Chicken', menu_id: 1, price: 16.75, image: ''}
+#             ]
 
-table = menu_items
-class_name = MenuItem
-table_string = 'menu_items'
-
-
-EasySeeds.single_seeder(table, class_name, table_string)
+# table = menu_items
+# class_name = MenuItem
+# table_string = 'menu_items'
 
 
+# EasySeeds.single_seeder(table, class_name, table_string)
 
 
-## in the future this will be the desired format
 
 
-# class_names = [MenuItem, Menu, Restaurant, User]
+# ## in the future this will be the desired format
 
-EasySeeds.create_easy_seed_data(class_names)
+
+# # class_names = [MenuItem, Menu, Restaurant, User]
+
+# EasySeeds.create_easy_seed_data(class_name)
