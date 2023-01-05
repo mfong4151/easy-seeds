@@ -1,4 +1,4 @@
-name: string,description: text,rating: float,address: string,state_code: string,city: string,longitude: float,latitude: float,image [string]
+name: string,description: text,rating: float,address: string,state_code: string,city: string,longitude: float,latitude: float
 Pho Ha Tien,It's Phoneomenal!,4.5,"1900 Ocean Ave, San Francisco, CA",CA,San Francisco,37.72,-122.4622,
 Marugame Udon,It's cheap and good!,4.9,"3251 20th Ave, San Francisco, CA",CA,San Francisco,37.72818,-122.47702,
 Bodega SF,Pho Swag,4.7,"138 Mason St, San Francisco, CA 94102",CA,San Francisco,37.78473,-122.40934,
