@@ -14,22 +14,21 @@ class EasySeeds
         ##Someone else can do the hard work of finding a way to get rid of this variable
 
 
+
     def self.single_seeder(table, class_name, table_string)
 
-        ApplicationRecord.transaction do 
-            class_name.destroy_all
-            ApplicationRecord.connection.reset_pk_sequence!(table_string)
-            puts "Creating #{table_string}..."   
+        class_name.destroy_all
+        ApplicationRecord.connection.reset_pk_sequence!(table_string)
+        puts "Creating #{table_string}..."   
         
-            table.each {|table_row| class_name.create!(**table_row)}
+        table.each {|table_row| class_name.create!(**table_row)}
             
-        end
-        
         puts "DONE WITH #{table_string.upcase}, #{table_string.upcase} SEEDING SUCCESSFUL"
         
     end 
 
-    ##class for creating multiple seeds
+
+    ##class method for creating multiple seeds, accepts an array of class names
     def self.create_easy_seed_data(class_names)
 
             tables, table_strings = csv_to_seeds = EasySeeds.tables_from_csvs
@@ -41,6 +40,15 @@ class EasySeeds
             end
         
     end
+
+    def self.destroy_table(class_name, table_string)
+        class_name.destroy_all
+        ApplicationRecord.connection.reset_pk_sequence!(table_string)
+
+
+    end
+
+    ##Unpacks CSVS
 
     def self.unpack_csvs(seed_file)
       data = []
@@ -54,7 +62,9 @@ class EasySeeds
     end
     
     
-    
+    #Used for converting your data to the relevant data types, all data from csvs comes in as string by default
+    #datum: string, refers to the actual piece of data you are using
+    #data_type, the type you wish to convert to, by default will return a string if none is given
     def self.type_conversion(datum, data_type = 'string')
       if ['text', 'string', 's'].include?(data_type)
         return datum.to_s
@@ -65,22 +75,27 @@ class EasySeeds
       elsif ['float', 'f'].include?(data_type)
       
         return datum.to_f
+
+      elsif ["bool", "boolean"].include?(data_type)
+
+        return ActiveModel::Type::Boolean.new.cast(datum)
+
+      elsif ["date"].include?(data_type)
+        return DateTime.parse(datum).to_date.to_s
+
       else
         return datum
       end
     end
     
+    ##Gets tables from csvs 
     def self.tables_from_csvs
         
         all_seed_data = []
         table_strings = []
         seed_folder = './db/seed_files'
         
-
-        
         Dir.chdir(seed_folder)
-        
-
         Dir.glob("*").each do |seed_file|
         
             seed_res = []
@@ -92,8 +107,8 @@ class EasySeeds
             
                 row.each_with_index do |col, i|
                     
-                key = EasySeeds.clean_headers(headers[i])
-                datum[key[0]] = type_conversion(row[i], key[1])
+                  key = EasySeeds.clean_headers(headers[i])
+                  datum[key[0]] = type_conversion(row[i], key[1])
                 
                 end
             
