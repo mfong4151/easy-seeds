@@ -31,15 +31,32 @@ class EasySeeds
     ##class method for creating multiple seeds, accepts an array of class names
     def self.create_easy_seed_data(class_names)
 
-            tables, table_strings = csv_to_seeds = EasySeeds.tables_from_csvs
-        
-            (0...tables.length).each do |i|
-        
-                class_name = class_names[i]
-                EasySeeds.single_seeder(tables[i], class_name, table_strings[i])
-            end
-        
+      tables, table_strings = csv_to_seeds = EasySeeds.tables_from_csvs
+  
+      (0...tables.length).each do |i|
+  
+          class_name = class_names[i]
+          EasySeeds.single_seeder(tables[i], class_name, table_strings[i])
+      end
     end
+
+  def self.attach_images(class_image_names)
+    seed_folder = '../seed_image_files'
+    Dir.chdir(seed_folder)
+
+    Dir.glob("*").each_with_index do |seed_file, i|
+      headers, data = EasySeeds.unpack_csvs(seed_file)
+      class_image_name = class_image_names[i]
+      puts "Attaching to #{class_image_name}..."
+
+      data.each_with_index do |row|
+          object_id, url, filename = row
+          class_instance = class_image_name.find_by_id(object_id)
+          class_instance.images.attach(io: URI.open(url), filename: filename)
+      end
+    end
+  end
+
 
     def self.destroy_table(class_name, table_string)
         class_name.destroy_all
