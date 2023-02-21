@@ -4,7 +4,6 @@ require 'csv'
 class EasySeeds
 
     #Creates a single instance of seed data
-
     def self.single_seeder(table, class_name, table_string)
 
         class_name.destroy_all
@@ -16,7 +15,6 @@ class EasySeeds
     end 
 
     #Creates easy seed data for all classes that are passed in
-
     def self.create_easy_seed_data(class_names)
       tables, table_strings = csv_to_seeds = EasySeeds.tables_from_csvs
       (0...tables.length).each{|i| EasySeeds.single_seeder(tables[i], class_names[i], table_strings[i])}
@@ -24,7 +22,6 @@ class EasySeeds
     end
 
     #Attaches images
-
     def self.attach_images(class_image_names)
       seed_folder = '../seed_image_files'
       Dir.chdir(seed_folder)
@@ -35,12 +32,12 @@ class EasySeeds
         puts "Attaching to #{class_image_name}..."
 
         data.each_with_index do |row|
-
             object_id, url, filename = row
             class_instance = class_image_name.find_by_id(object_id)
             puts class_instance, url, filename
             class_instance.image.attach(io: URI.open(url), filename: filename)
             puts "Attached to #{filename}"
+
         end
       end
     end
@@ -59,9 +56,7 @@ class EasySeeds
       (class_names.length - 1).downto(0) {|i| EasySeeds.destroy_table(class_names[i], table_strings[i])}
     end
 
-
     ##Reads and parses CSVS
-
     def self.unpack_csvs(seed_file)
       data = []
       CSV.foreach(seed_file) {|row|data << row}
@@ -86,11 +81,9 @@ class EasySeeds
             headers, data = unpack_csvs(seed_file)
             
             data.each_with_index do |row, j|
-                
                 datum = {}
 
                 row.each_with_index do |col, i|
-                    
                   key = EasySeeds.clean_headers(headers[i])
                   datum[key[0]] = type_conversion(row[i], key[1])
                 

@@ -12,7 +12,7 @@ class EasySeeds
         puts "Creating #{table_string} seed data..."   
         
         table.each {|row| class_name.create!(**row)}
-            
+  
         puts "DONE WITH #{table_string.upcase}, #{table_string.upcase} SEEDING SUCCESSFUL"
         
     end 
