@@ -9,7 +9,7 @@ If that's been your rails seeding experience, then look no further, easy seeds h
 
 With some slight modifications to your_project/db, you'll be on your way to a larger, faster, and more headache free seeding experience.
 
-# Setup instruction
+# Setup instructions
 
 1. Git clone or copy paste the easy_seeds.rb file into your rails /db folder. Remove the .git file to prevent nested repos.
 2. Copy all your CSVs into a folder /db/seeds_resources folder. Your file names must be named the same as your tables. See the examples attached in the repo.
@@ -19,20 +19,6 @@ With some slight modifications to your_project/db, you'll be on your way to a la
 6. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seeds/resources.
 7. At the bottom of your your seeds.rb file call EasySeeds.create_easy_seed_data(class_names)
 8. Refer to the example included in ./demo/db if you get stuck!
-
-# Common preconditions:
-
-    1. table: Expects an array version of your table that corresponds to the name. 
-        Your table MUST be formated as an array containing multiple hashes, see the example from my menu_items class on github.
-        Because of how this is set up, the variable name MUST be equivalent to the name of the table in migrations.
-
-    2. class_name: Expects the actual class name created in models. Expects an actual class variable.
-
-    3. table_string: Table name given as a string. Usually used for destroying tables ahead of import. Expects a string
-
-
-
-# Setup instructions
 
 ## CSV Seed_Files Setup 
 
@@ -56,6 +42,15 @@ EasySeeds.attach_images runs after all database instances are created. It uses t
 to attach images to an instance of that Class_Name and Id. 
 
 hit us up with questions. 
+
+
+# Common preconditions:
+
+1. table: Expects an array version of your table that corresponds to the name. 
+    Your table MUST be formated as an array containing multiple hashes, see the example from my menu_items class on github.
+    Because of how this is set up, the variable name MUST be equivalent to the name of the table in migrations.
+2. class_name: Expects the actual class name created in models. Expects an actual class variable.
+3. table_string: Table name given as a string. Usually used for destroying tables ahead of import. Expects a string
 
 
 # Common Issues:
