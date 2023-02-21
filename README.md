@@ -1,5 +1,5 @@
 # easy_seeds
-Easy seeder for rails seed projects. Allows use of csv files in rails seeding
+Easy seedes for Ruby on Rails projects. Allows the use of csv files for bulk seeding.
 
 
 # The Upshot
@@ -44,7 +44,7 @@ to attach images to an instance of that Class_Name and Id.
 hit us up with questions. 
 
 
-# Common preconditions:
+# Common Preconditions:
 
 1. table: Expects an array version of your table that corresponds to the name. 
     Your table MUST be formated as an array containing multiple hashes, see the example from my menu_items class on github.
