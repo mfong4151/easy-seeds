@@ -1,15 +1,39 @@
 # easy_seeds
 Easy seeder for rails seed projects. Allows use of csv files in rails seeding
 
-Setup instruction
 
-1. Git clone or copy paste the easy_seeder.rb file into your rails /db folder. Remove the .git file to prevent nested repos.
+# The Upshot
+
+Tired of the old fashion way of seeding your database? Have a lot of rows of data? No problem, just try and hard code all 500 rows by hand. Oh dear, where did I miss that comma? 
+If that's been your rails seeding experience, then look no further, easy seeds has got you covered. 
+
+With some slight modifications to your_project/db, you'll be on your way to a larger, faster, and more headache free seeding experience.
+
+# Setup instruction
+
+1. Git clone or copy paste the easy_seeds.rb file into your rails /db folder. Remove the .git file to prevent nested repos.
 2. Copy all your CSVs into a folder /db/seeds_resources folder. Your file names must be named the same as your tables. See the examples attached in the repo.
-3. CSV files must be named in the the format "<number>_<tablename plural>.csv" e.g "1_users_seeds.csv". EasySeeds.create_easy_seed_data works by taking the table you want created first and making it, so be careful how you name your tables.
-4. Header name columns follow the following format "name":"data_type". If a :"data_type" is not given, EasySeeds defaults to a string object.
-5. require_relative "easy_seeder.rb" into your /db/seeds.rb file.
+3. CSV files must be named in the the format "<number>_<tablename plural>.csv" e.g "1_users_seeds.csv". EasySeeds.create_easy_seed_data works by reading the table you want created in order of entry and creating them accordingly, so pay attention to how you name your .csv files.
+4. Header collumn names follow the following format "name":"data_type". If a :"data_type" is not given, EasySeeds defaults to a string object.
+5. require_relative "easy_seeds.rb" into your /db/seeds.rb file.
 6. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seeds/resources.
 7. At the bottom of your your seeds.rb file call EasySeeds.create_easy_seed_data(class_names)
+8. Refer to the example included in ./demo/db if you get stuck!
+
+# Common preconditions:
+
+    1. table: Expects an array version of your table that corresponds to the name. 
+        Your table MUST be formated as an array containing multiple hashes, see the example from my menu_items class on github.
+        Because of how this is set up, the variable name MUST be equivalent to the name of the table in migrations.
+
+    2. class_name: Expects the actual class name created in models. Expects an actual class variable.
+
+    3. table_string: Table name given as a string. Usually used for destroying tables ahead of import. Expects a string
+
+    Common Issues:
+
+    Deleting: The issue occurs if theres a directed graph cycle relation between tables, or if there are joins tables with multiple presence constraints on the foreign keys. 
+    Tip: To avoid this you have to typically drop the entire database, although this is obviously not recommended in production.
 
 
 # Setup instructions
@@ -17,7 +41,7 @@ Setup instruction
 ___ CSV Seed_Files Setup ____
 
 See the samples for how CSV's are set up. The headers need to match the database column names exactly. 
-Use the format -- column_name:data_type -- for the headers. Easy_Seeder will do type conversion for you. Default is "string" and does not need to be declared. 
+Use the format -- column_name:data_type -- for the headers. easy_seeds will do type conversion for you. Default is "string" and does not need to be declared. 
 Accepted data types: string, integer, float, boolean, date. 
 If you need an additional data type ping Marcos or Max and we can update. 
 

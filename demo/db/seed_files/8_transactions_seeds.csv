@@ -1,0 +1,4 @@
+user_id:int,restaurant_id:int,transaction_sum,review_left:boolean
+1,44,42.69,FALSE
+1,21,2123.23,FALSE
+1,18,299.95,FALSE

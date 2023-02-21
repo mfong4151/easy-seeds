@@ -1,0 +1,3 @@
+user_id:int,restaurant_id:int
+1,1
+1,2

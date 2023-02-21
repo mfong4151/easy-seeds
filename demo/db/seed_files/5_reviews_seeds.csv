@@ -1,0 +1,80 @@
+restaurant_id:int,user_id:int,body:text
+1,1,Great food and service! Highly recommend.
+3,1,Not enough chicken in my ramen.
+3,3,"Nice atmosphere, friendly staff."
+4,4,Best sushi I've had in a long time.
+5,5,Good value for the price.
+3,1,"Like I said, not enough chicken."
+7,2,"Good Thai food, reasonable prices."
+8,3,Nice selection of craft beers.
+9,4,Wonderful French cuisine.
+10,5,"Excellent service, great ambiance."
+11,1,"Delicious sandwiches, fast service."
+12,2,Great selection of vegetarian options.
+13,3,Nice outdoor seating area.
+14,4,"Lovely Italian food, reasonable prices."
+15,5,"Good Chinese food, prompt service."
+16,1,"Tasty Mexican food, friendly staff."
+17,2,"Delicious Greek food, great atmosphere."
+18,3,"Great seafood, friendly service."
+19,4,"Lovely ambiance, excellent service."
+20,5,Good value for the price.
+21,1,"Delicious pizzas, great atmosphere."
+22,2,Good value for the price.
+23,3,Nice outdoor seating area.
+24,4,"Tasty sandwiches, fast service."
+25,5,Great selection of vegetarian options.
+26,1,"Lovely Italian food, reasonable prices."
+27,2,"Good Thai food, reasonable prices."
+28,3,Nice selection of craft beers.
+29,4,Wonderful French cuisine.
+30,5,"Excellent service, great ambiance."
+31,1,"Delicious burgers, nice patio."
+32,2,"Great seafood, friendly service."
+33,3,"Lovely ambiance, excellent service."
+34,4,Best sushi I've had in a long time.
+35,5,"Good Chinese food, prompt service."
+36,1,"Tasty Mexican food, friendly staff."
+37,2,"Delicious Greek food, great atmosphere."
+38,3,Great food and service! Highly recommend.
+39,4,"Nice atmosphere, friendly staff."
+40,1,"Terrible service, rude staff."
+41,2,Overpriced and mediocre food.
+42,3,Would not recommend. Poor service.
+43,4,"Disgusting bathrooms, stay away."
+44,5,"Terrible food, don't waste your money."
+40,1,"Rude staff, wouldn't come back."
+41,2,"Terrible experience, stay away."
+42,3,"Vulgar staff, will not return."
+43,4,"Terrible service, avoid at all costs."
+44,5,"Horrible food, rude staff."
+40,1,Worst restaurant I've ever been to.
+41,2,"Rude staff, terrible food."
+42,3,Avoid this place at all costs.
+43,4,Vulgar and unprofessional staff.
+44,5,"Terrible experience, would not recommend."
+40,1,"Terrible service, rude staff."
+41,2,Overpriced and mediocre food.
+42,3,Would not recommend. Poor service.
+43,4,"Disgusting bathrooms, stay away."
+44,5,"Terrible food, don't waste your money."
+40,1,"Rude staff, wouldn't come back."
+41,2,"Terrible experience, stay away."
+42,3,"Vulgar staff, will not return."
+43,4,"Terrible service, avoid at all costs."
+44,5,"Horrible food, rude staff."
+40,1,Worst restaurant I've ever been to.
+41,2,"Rude staff, terrible food."
+42,3,Avoid this place at all costs.
+43,4,Vulgar and unprofessional staff.
+44,5,"Terrible experience, would not recommend."
+40,1,"Terrible service, rude staff."
+41,2,Overpriced and mediocre food.
+42,3,Would not recommend. Poor service.
+43,4,"Disgusting bathrooms, stay away."
+44,5,"Terrible food, don't waste your money."
+40,1,"Rude staff, wouldn't come back."
+41,2,"Terrible experience, stay away."
+42,3,"Vulgar staff, will not return."
+43,4,"Terrible service, avoid at all costs."
+44,5,"Horrible food, rude staff."
