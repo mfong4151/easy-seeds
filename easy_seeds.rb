@@ -10,9 +10,7 @@ class EasySeeds
         class_name.destroy_all
         ApplicationRecord.connection.reset_pk_sequence!(table_string)
         puts "Creating #{table_string} seed data..."   
-        
         table.each {|row| class_name.create!(**row)}
-            
         puts "DONE WITH #{table_string.upcase}, #{table_string.upcase} SEEDING SUCCESSFUL"
         
     end 
@@ -20,9 +18,7 @@ class EasySeeds
     #Creates easy seed data for all classes that are passed in
 
     def self.create_easy_seed_data(class_names)
-
       tables, table_strings = csv_to_seeds = EasySeeds.tables_from_csvs
-  
       (0...tables.length).each{|i| EasySeeds.single_seeder(tables[i], class_names[i], table_strings[i])}
     
     end
@@ -39,6 +35,7 @@ class EasySeeds
         puts "Attaching to #{class_image_name}..."
 
         data.each_with_index do |row|
+
             object_id, url, filename = row
             class_instance = class_image_name.find_by_id(object_id)
             puts class_instance, url, filename
@@ -81,7 +78,6 @@ class EasySeeds
         all_seed_data = []
         table_strings = []
         seed_folder = './db/seed_files'
-        
         Dir.chdir(seed_folder)
         
         Dir.glob("*").each do |seed_file|
@@ -92,7 +88,7 @@ class EasySeeds
             data.each_with_index do |row, j|
                 
                 datum = {}
-            
+
                 row.each_with_index do |col, i|
                     
                   key = EasySeeds.clean_headers(headers[i])
@@ -101,11 +97,12 @@ class EasySeeds
                 end
             
                 seed_res << datum
+
             end
-            
             
             table_strings << seed_file[seed_file.index('_') + 1..-11]
             all_seed_data << seed_res
+            
         end
         
         return all_seed_data, table_strings
@@ -115,12 +112,16 @@ class EasySeeds
     protected
 
     def self.clean_headers(header)
+
         if header.include?(":")
           first, second, = header.split(":")
           header_and_type = [first.downcase, second]
+
         else
           header_and_type = [header.downcase, 'string']
+
         end
+
         return header_and_type
     end
 
@@ -139,11 +140,9 @@ class EasySeeds
         return datum.to_i
       
       elsif ['float', 'f'].include?(data_type)
-      
         return datum.to_f
 
       elsif ["bool", "boolean"].include?(data_type)
-
         return ActiveModel::Type::Boolean.new.cast(datum)
 
       elsif ["date"].include?(data_type)
@@ -151,9 +150,9 @@ class EasySeeds
 
       else
         return datum
+
       end
     end
-
 end
 
 

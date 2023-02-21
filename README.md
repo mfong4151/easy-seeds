@@ -44,6 +44,12 @@ to attach images to an instance of that Class_Name and Id.
 hit us up with questions. 
 
 
+# Projects using easy seeds
+    
+    https://willow-8s24.onrender.com/
+    https://suber-eats.onrender.com/
+    
+
 # Common Preconditions:
 
 1. table: Expects an array version of your table that corresponds to the name. 
