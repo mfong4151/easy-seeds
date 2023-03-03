@@ -47,17 +47,6 @@ class EasySeeds
     end
 
 
-
-    def self.find_photo_folder
-      seed_folder =''
-      cwd = Dir.pwd
-
-      if cwd.include('/db')
-      end
-
-    end
-
-
     #Attaches images
 
     def self.attach_images(class_image_names)
