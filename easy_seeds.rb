@@ -28,7 +28,7 @@ class EasySeeds
         puts "Creating #{table_string} seed data..."   
         
         table.each_with_index do |row, i| 
-          puts "Finished Seeding the #{i.to_s}th #{table_string} item" if i % 100 >= 1
+          puts "Finished Seeding the #{i.to_s}th #{table_string} item" if i % 100 == 0
           class_name.create!(**row)
 
         end
