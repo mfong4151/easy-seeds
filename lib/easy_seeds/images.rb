@@ -1,6 +1,9 @@
+require_relative 'easy_seeds/csv_methods'
+
 module EasySeeds
     class Images
          #Attaches images
+        include CSVS
 
         def self.attach_images(class_image_names)
 
