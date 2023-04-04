@@ -1,5 +1,3 @@
-
-
 =begin
     Common preconditions:
     1. table: Expects an array version of your table that corresponds to the name. 
