@@ -1,4 +1,4 @@
-require_relative 'easy_seeder'
+require_relative 'easy_seeds'
 
   
 class_names = [User, Restaurant, Menu, MenuItem]
