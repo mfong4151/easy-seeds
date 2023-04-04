@@ -5,7 +5,7 @@ require_relative "lib/easy_seeds/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "easy_seeds"
-  spec.version       = "1.0.3"
+  spec.version       = "1.0.4"
   spec.authors       = ["Maxwell Fong", "Marcos Henrich"]
   spec.email         = ["mfong415@gmail.com", "jmarcoshenrich@gmail.com"]
   spec.description   = "A library for easily generating seed data in Ruby on Rails from .CSV files"
