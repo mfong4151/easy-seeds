@@ -17,6 +17,8 @@
 
 module EasySeeds
 end
-require_relative 'easy_seeds/seeder'
-require_relative 'easy_seeds/destroy'
-require_relative 'easy_seeds/images'
+
+
+require_relative './seeder.rb'
+require_relative './destroy.rb'
+require_relative './images.rb'

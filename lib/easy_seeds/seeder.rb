@@ -1,8 +1,7 @@
-require_relative 'csv_methods'
+require_relative './csv_methods'
 
 module EasySeeds 
   class Seeder
-    include CSVS
     
     #Creates a single instance of seed data
     def self.single_seeder(table, class_name, table_string)
@@ -19,7 +18,7 @@ module EasySeeds
     
     #Creates easy seed data for all classes that are passed in
     def self.create_easy_seed_data(class_names)
-      tables, table_strings = EasySeeds::CSV.tables_from_csvs
+      tables, table_strings = EasySeeds::CSVLoader.tables_from_csvs
       
       (0...tables.length).each do |i|
         EasySeeds::Seeder.single_seeder(tables[i], class_names[i], table_strings[i])

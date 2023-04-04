@@ -1,7 +1,7 @@
 require 'csv'
 
 module EasySeeds
-  class CSV
+  class CSVLoader
     def self.unpack_csvs(seed_file)
       data = []
       CSV.foreach(seed_file) {|row|data << row}

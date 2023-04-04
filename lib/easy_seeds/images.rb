@@ -1,8 +1,8 @@
-require_relative 'csv_methods'
+require_relative './csv_methods'
+require "open-uri"
 
 module EasySeeds
   class Images
-    include CSVS
 
     def self.attach_images(class_image_names)
       begin
@@ -12,7 +12,7 @@ module EasySeeds
       end
 
       Dir.glob("*").each_with_index do |seed_file, i|
-        headers, data = CSVS.unpack_csvs(seed_file)
+        headers, data = CSVLoader.unpack_csvs(seed_file)
         class_image_name = class_image_names[i]
         puts "Attaching to #{class_image_name}..."
 
