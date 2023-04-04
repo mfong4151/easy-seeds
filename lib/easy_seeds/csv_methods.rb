@@ -1,3 +1,5 @@
+require 'csv'
+
 module EasySeeds
   class CSV
     def self.unpack_csvs(seed_file)
