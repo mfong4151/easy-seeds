@@ -5,7 +5,7 @@ Easy seedes for Ruby on Rails projects. Allows the use of csv files for bulk see
 # The Upshot
 
 Tired of the old fashion way of seeding your database? Have a lot of rows of data? No problem, just try and hard code all 500 rows by hand. Oh dear, where did I miss that comma? 
-If that's been your rails seeding experience, then look no further, easy seeds has got you covered. 
+If that's been your Ruby on Rails seeding experience, then look no further, Easy Seeds has got you covered. 
 
 With some slight modifications to your_project/db, you'll be on your way to a larger, faster, and more headache free seeding experience.
 
