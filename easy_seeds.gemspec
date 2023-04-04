@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'easy_seeds/version'
+require_relative "lib/easy_seeds/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "easy_seeds"
-  spec.version       = EasySeeds::VERSION
+  spec.version       = '1.0.0'
   spec.authors       = ["Maxwell Fong", "Marcos Henrich"]
   spec.email         = ["mfong415@gmail.com", "jmarcoshenrich@gmail.com"]
   spec.description   = "A library for easily generating seed data in Ruby on Rails from .CSV files"
@@ -15,10 +15,10 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+
   spec.require_paths = ["lib"]
 
   spec.add_dependency "csv"
-  spec.add_dependency "aws-sdk-s3", "~> 1.105"
   spec.required_ruby_version = ">= 2.7.0"
   spec.metadata = {
   "source_code_uri" => "https://github.com/mfong4151/easy-seeds",
