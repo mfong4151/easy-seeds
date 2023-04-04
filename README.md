@@ -11,13 +11,13 @@ With some slight modifications to your_project/db, you'll be on your way to a la
 
 # Setup instructions
 
-1. Git clone or copy paste the easy_seeds.rb file into your rails /db folder. Remove the .git file to prevent nested repos.
-2. Copy all your CSVs into a folder /db/seeds_resources folder. Your file names must be named the same as your tables. See the examples attached in the repo.
-3. CSV files must be named in the the format "<number>_<tablename plural>.csv" e.g "1_users_seeds.csv". EasySeeds.create_easy_seed_data works by reading the table you want created in order of entry and creating them accordingly, so pay attention to how you name your .csv files.
+1. Add the following line to your Gemfile "gem 'easy_seeds'".
+2. Copy all your CSVs into a /db/seed_files, and /db/seed_image_files folder for files and images respectively. Your file names must be named the same as your tables. See the examples attached in the repo.
+3. CSV files must be named in the the format "<number>_<tablename plural>.csv" e.g "1_users_seeds.csv". EasySeeds::Seeder.create_easy_seed_data works by reading the table you want created in order of entry and creating them accordingly, so pay attention to how you name your .csv files.
 4. Header collumn names follow the following format "name":"data_type". If a :"data_type" is not given, EasySeeds defaults to a string object.
-5. require_relative "easy_seeds.rb" into your /db/seeds.rb file.
-6. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seeds/resources.
-7. At the bottom of your your seeds.rb file call EasySeeds.create_easy_seed_data(class_names)
+5. Require 'easy_seeds/easy_seeds' at the top of your seeds.rb file.
+6. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seed_files or /db/seed_image_files. The reason for this is because Rails is largely agnostic as to what order you want your seed files to be seeded in. Generally you should seed the folders that items that don't have foreign keys first. When deleteing items from your tables, you generally want to go in the other direction: items with foreign keys first, items with foreign keys point to it last.
+7. At the bottom of your your seeds.rb file call EasySeeds::Seeder.create_easy_seed_data(class_names)
 8. Refer to the example included in ./demo/db if you get stuck!
 
 ## CSV Seed_Files Setup 
