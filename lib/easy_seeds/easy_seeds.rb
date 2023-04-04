@@ -14,11 +14,11 @@
     Tip: To avoid this you have to typically drop the entire database, although this is obviously not recommended in production.
 
 =end
-
 module EasySeeds
 end
 
 
+require_relative "./version"
 require_relative './seeder.rb'
 require_relative './destroy.rb'
 require_relative './images.rb'
