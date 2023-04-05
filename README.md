@@ -2,6 +2,12 @@
 Easy seedes for Ruby on Rails projects. Allows the use of csv files for bulk seeding.
 
 
+# Projects using easy seeds
+    
+https://willow-8s24.onrender.com/ : Fullstack web-app clone of Zillow with thematic elements.
+https://suber-eats.onrender.com/ : Fullstack web-app clone of Uber Eats
+    
+
 # The Upshot
 
 Tired of the old fashion way of seeding your database? Have a lot of rows of data? No problem, just try and hard code all 500 rows by hand. Oh dear, where did I miss that comma? 
@@ -44,11 +50,6 @@ to attach images to an instance of that Class_Name and Id.
 hit us up with questions. 
 
 
-# Projects using easy seeds
-    
-    https://willow-8s24.onrender.com/
-    https://suber-eats.onrender.com/
-    
 
 # Common Preconditions:
 
@@ -60,42 +61,46 @@ hit us up with questions.
 
 # Methods:
 
-(Produced with ChatGPT4, pending review)
-
-EasySeeds::CSVMethods
+## EasySeeds::CSVMethods
 
 The CSVMethods class provides methods for parsing and unpacking CSV files into usable seed data.
 Methods
 
-    unpack_csvs(seed_file): Given a CSV file, returns an array of headers and an array of arrays containing data from the CSV.
-    tables_from_csvs: Given a directory of CSV files, returns an array of arrays containing seed data and an array of table names.
+unpack_csvs(seed_file): Given a CSV file, returns an array of headers and an array of arrays containing data from the CSV.
+tables_from_csvs: Given a directory of CSV files, returns an array of arrays containing seed data and an array of table names.
 
-EasySeeds::Seeder
+## EasySeeds::Seeder
 
 The Seeder class provides methods for creating seed data.
 Methods
 
-    single_seeder(table, class_name, table_string): Given a table (an array of hashes containing seed data), a class name (the name of the ActiveRecord class to seed), and a table string (the name of the table in the database), creates a single instance of seed data.
-    create_easy_seed_data(class_names): Given an array of class names (the names of the ActiveRecord classes to seed), creates easy seed data for all of the classes.
+single_seeder(table, class_name, table_string): Given a table (an array of hashes containing seed data), a class name (the name of the ActiveRecord class to seed), and a table string (the name of the table in the database), creates a single instance of seed data.
+
+create_easy_seed_data(class_names): Given an array of class names (the names of the ActiveRecord classes to seed), creates easy seed data for all of the classes.
 
 EasySeeds::Images
 
 The Images class provides methods for attaching images to seed data.
 Methods
 
-    attach_images(class_image_names): Given an array of class names (the names of the ActiveRecord classes to attach images to), attaches images to the seed data for each class.
+attach_images(class_image_names): Given an array of class names (the names of the ActiveRecord classes to attach images to), images to the seed data for each class.
 
 EasySeeds::Destroy
 
 The Destroy class provides methods for destroying seed data.
 Methods
 
-    destroy_table(class_name, table_string): Given a class name (the name of the ActiveRecord class to destroy) and a table string (the name of the table in the database), destroys the table and resets the primary key sequence.
-    destroy_tables(class_names, table_strings): Given an array of class names (the names of the ActiveRecord classes to destroy) and an array of table strings (the names of the tables in the database), destroys all of the tables and resets their primary key sequences.
+destroy_table(class_name, table_string): Given a class name (the name of the ActiveRecord class to destroy) and a tablestring (the name of the table in the database), destroys the table and resets the primary key sequence.
+
+destroy_tables(class_names, table_strings): Given an array of class names (the names of the ActiveRecord classes to destroy)and an array of table strings (the names of the tables in the database), destroys all of the tables and resets their primarykey sequences.
 
 
 # Common Issues:
 
-    Deleting: The issue occurs if theres a directed graph cycle relation between tables, or if there are joins tables with multiple presence constraints on the foreign keys. 
-    Tip: To avoid this you have to typically drop the entire database, although this is obviously not recommended in production.
+## Deleting:
+    
+The issue occurs if theres a directed graph cycle relation between tables, or if there are joins tables with multiplepresence constraints on the foreign keys. 
+
+Tip: To avoid this you have to typically drop the entire database, although this is obviously not recommended in 
+uction.
 
