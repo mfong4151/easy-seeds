@@ -1,5 +1,3 @@
-require_relative './easy_seeds/easy_seeds.rb'
-require "open-uri"
 
 =begin
 
@@ -30,6 +28,7 @@ hit us up with questions.
 
 =end
 
+require_relative './easy_seeds/easy_seeds.rb'
 
 
 class_names = [User, Restaurant, Menu, MenuItem, Review, Cart, CartItem, Transaction, Location]
