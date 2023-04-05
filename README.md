@@ -67,15 +67,19 @@ The CSVMethods class provides methods for parsing and unpacking CSV files into u
 
 
 ### unpack_csvs(seed_file): 
-    Given a CSV file, returns an array of headers and an array of arrays containing data from the CSV.
-    tables_from_csvs: Given a directory of CSV files, returns an array of arrays containing seed data and an array of table names.
+
+Given a CSV file, returns an array of headers and an array of arrays containing data from the CSV.
+    
+### tables_from_csvs: 
+    Given a directory of CSV files, returns an array of arrays containing seed data and an array of table names.
 
 ## EasySeeds::Seeder
 
 The Seeder class provides methods for creating seed data.
 
 ### single_seeder(table, class_name, table_string):
-    Given a table (an array of hashes containing seed data), a class name (the name of the ActiveRecord class to seed), and a table string (the name of the table in the database), creates a single instance of seed data.
+    
+Given a table (an array of hashes containing seed data), a class name (the name of the ActiveRecord class to seed), and a table string (the name of the table in the database), creates a single instance of seed data.
 
 ### create_easy_seed_data(class_names): 
     Given an array of class names (the names of the ActiveRecord classes to seed), creates easy seed data for all of the classes.
@@ -86,7 +90,8 @@ The Images class provides methods for attaching images to seed data.
 
 
 ### attach_images(class_image_names): 
-    Given an array of class names (the names of the ActiveRecord classes to attach images to), images to the seed data for each class.
+
+Given an array of class names (the names of the ActiveRecord classes to attach images to), images to the seed data for each class.
 
 ## EasySeeds::Destroy
 
@@ -94,10 +99,12 @@ The Destroy class provides methods for destroying seed data.
 Methods
 
 ### destroy_table(class_name, table_string): 
-     Given a class name (the name of the ActiveRecord class to destroy) and a tablestring (the name of the table in the database), destroys the table and resets the primary key sequence.
+
+Given a class name (the name of the ActiveRecord class to destroy) and a tablestring (the name of the table in the database), destroys the table and resets the primary key sequence.
 
 ### destroy_tables(class_names, table_strings): 
-    Given an array of class names (the names of the ActiveRecord classes to destroy)and an array of table strings (the names of the tables in the database), destroys all of the tables and resets their primarykey sequences.
+
+Given an array of class names (the names of the ActiveRecord classes to destroy)and an array of table strings (the names of the tables in the database), destroys all of the tables and resets their primarykey sequences.
 
 
 # Common Issues:
