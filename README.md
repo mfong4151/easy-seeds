@@ -71,7 +71,7 @@ The CSVMethods class provides methods for parsing and unpacking CSV files into u
 Given a CSV file, returns an array of headers and an array of arrays containing data from the CSV.
     
 ### tables_from_csvs: 
-    Given a directory of CSV files, returns an array of arrays containing seed data and an array of table names.
+Given a directory of CSV files, returns an array of arrays containing seed data and an array of table names.
 
 ## EasySeeds::Seeder
 
@@ -82,7 +82,8 @@ The Seeder class provides methods for creating seed data.
 Given a table (an array of hashes containing seed data), a class name (the name of the ActiveRecord class to seed), and a table string (the name of the table in the database), creates a single instance of seed data.
 
 ### create_easy_seed_data(class_names): 
-    Given an array of class names (the names of the ActiveRecord classes to seed), creates easy seed data for all of the classes.
+
+Given an array of class names (the names of the ActiveRecord classes to seed), creates easy seed data for all of the classes.
 
 ## EasySeeds::Images
 
