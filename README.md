@@ -1,4 +1,4 @@
-# easy_seeds
+# easy-seeds
 Easy seedes for Ruby on Rails projects. Allows the use of csv files for bulk seeding.
 
 
