@@ -18,6 +18,7 @@ module EasySeeds
     
     #Creates easy seed data for all classes that are passed in
     def self.create_easy_seed_data(class_names)
+      puts 'Creating easy seeds data'
       tables, table_strings = EasySeeds::CSVLoader.tables_from_csvs
       
       (0...tables.length).each do |i|
