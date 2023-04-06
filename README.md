@@ -15,6 +15,8 @@ If that's been your Ruby on Rails seeding experience, then look no further, Easy
 
 With some slight modifications to your_project/db, you'll be on your way to a larger, faster, and more headache free seeding experience.
 
+https://user-images.githubusercontent.com/5301131/230407876-c9b0d2b7-fa61-459c-961a-830369bb3147.mp4
+
 # Setup instructions
 
 1. Add the following line to your Gemfile:
