@@ -16,7 +16,7 @@ module EasySeeds
       seed_folder = './db/seed_files'
       Dir.chdir(seed_folder)
 
-      Dir.glob("*").each do |seed_file|
+      Dir.glob("*").sort.each do |seed_file|
         seed_res = []
         headers, data = unpack_csvs(seed_file)
 
@@ -39,11 +39,11 @@ module EasySeeds
     protected
 
     def self.clean_headers(header)
-      if header.include?(":")
+      if header&.include?(":")
         first, second, = header.split(":")
         header_and_type = [first.downcase, second]
       else
-        header_and_type = [header.downcase, 'string']
+        header_and_type = [header&.downcase, 'string']
       end
       return header_and_type
     end

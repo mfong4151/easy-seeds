@@ -10,7 +10,7 @@ module EasySeeds
 
       table.each_with_index do |row, i|
         puts "Finished Seeding the #{i.to_s}th #{table_string} item" if i % 100 == 0
-        class_name.create!(**row)
+        class_name&.create!(**row)
       end
 
       puts "DONE WITH #{table_string.upcase}, #{table_string.upcase} SEEDING SUCCESSFUL"
