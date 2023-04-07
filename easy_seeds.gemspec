@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "csv"
   spec.required_ruby_version = ">= 2.7.0"
   spec.metadata = {
-  "source_code_uri" => "https://github.com/mfong4151/easy-seeds",
-  "bug_tracker_uri" => "https://github.com/mfong4151/easy-seeds/issues",
-  "documentation_uri" => "https://github.com/mfong4151/easy-seeds/blob/main/README.md"
-}
+    "source_code_uri" => "https://github.com/mfong4151/easy-seeds",
+    "bug_tracker_uri" => "https://github.com/mfong4151/easy-seeds/issues",
+    "documentation_uri" => "https://github.com/mfong4151/easy-seeds/blob/main/README.md"
+  }
 end
