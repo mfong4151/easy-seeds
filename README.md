@@ -41,18 +41,21 @@ Use the format -- column_name:data_type -- for the headers. easy_seeds will do t
 Accepted data types: string, integer, float, boolean, date.
 If you need an additional data type, ping Marcos or Max and we can update.
 
-## CSV Image Setup
+## CSV Images Setup
 
-Seed image files Require an ID, URL and Filename. You can copy these last two straight from the AWS console.
-the ID will attach the image path to that ID's object instance. See "Easy Seeder Setup" for information on file ordering.
+Easy_seeds has an image upload method built specifically for AWS dev and production buckets. Your buckets and permissions need to be set up separately. It uses images.attach() to attach the files to the relevant model using Active Storage. See the example for file structure. 
+    
+Seed image files Require an ID, URL and Filename. The Image path will be attached to the model instance matching the ID. The URL and Filename can be found directly in the AWS console.
+    
+See "Easy Seeder Setup" for information on file ordering.
 
 ## Easy Seeder Setup
 
 File order matters!
-Place your model names in class_names for each class you are making Seed Data for. Each class needs its own CSV.
+Place your model names in class_names for each class you are making Seed Data for. Each class needs a separate CSV.
 
 The order of class_names and the order of files in seed_files should match your migration order (to prevent null database constraint failures).
-`EasySeeds#attach_images` runs after all database instances are created. It uses the value in class_image_names
+If you are using `EasySeeds#attach_images`, it must run after all database instances are created. It uses the value in class_image_names
 to attach images to an instance of that ClassName and ID.
 
 Hit us up with questions.
