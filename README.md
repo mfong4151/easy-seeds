@@ -19,20 +19,75 @@ https://user-images.githubusercontent.com/5301131/230407876-c9b0d2b7-fa61-459c-9
 
 # Setup instructions
 
+The best way to read these setup instructions is to open the demo folder in e
+
 1. Add the following line to your Gemfile:
-```
+```Ruby
 gem 'easy_seeds'
 ```
 2. Copy all your CSVs into `/db/seed_files` and `/db/seed_image_files` folder for files and images respectively. Your file names must be named the same as your tables. See the examples attached in the repo.
 3. CSV files must be named in the the format "<number>_<tablename plural>.csv" e.g "1_users_seeds.csv". EasySeeds::Seeder.`#create_easy_seed_data` works by reading the rows you want created in the order of entry and creating them accordingly, so pay attention to how you name your .csv files.
 4. Header column names follow the following format "name":"data_type". If a :"data_type" is not given, EasySeeds defaults to a string object.
 5. At the top of your seeds.rb file:
-```
+```Ruby
 require 'easy_seeds/easy_seeds'
 ```
-6. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seed_files or /db/seed_image_files. The reason for this is because Rails is largely agnostic as to what order you want your seed files to be loaded in. Generally you should seed the folders that items that don't have foreign keys first. When deleteing items from your tables, you generally want to go in the other direction: items with foreign keys first, items with foreign keys point to it last.
+6a. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seed_files or /db/seed_image_files. The reason for this is because Rails is largely agnostic as to what order you want your seed files to be loaded in. Generally you should seed the folders with items that don't have foreign keys first. 
+
+```Ruby
+##Initialize array members in order we want things to be seeded. There is a foreign key on menus pointing to restaurants, so we seed restairamts first
+##Same goes for menuitems, cartitems, etc
+class_names = [User, Restaurant, Menu, MenuItem, Review, Cart, CartItem, Transaction, Location]
+```
+
+6b. Now, intialize a list of strings that are lowercase, plural versions of their table counterpart. These should follow the same order:
+
+```Ruby
+table_strings = ['users', 'restaurants', 'menus', 'menu_items', 'reviews', 'carts', 'cart_items', 'transactions', 'locations']
+```
+
+
 7. At the bottom of your your seeds.rb file call EasySeeds::Seeder.create_easy_seed_data(class_names)
-8. Refer to the example included in ./demo/db if you get stuck!
+```Ruby
+EasySeeds::Seeder.create_easy_seed_data(class_names) 
+
+8. Refer to the example included in ./demo/db if you get stuck! For convenience, heres what your file should look like:
+
+```Ruby
+
+require 'easy_seeds/easy_seeds' #Step 5.
+
+
+##Initialize tables in order we want things to be seeded. There is a foreign key on Menus pointing to Restaurant, so we seed Restaurant first
+##In other words, things should be seeded in the topologically sorted order.
+
+class_names = [User, Restaurant, Menu, MenuItem, Review, Cart, CartItem, Transaction, Location]  #Step 6.
+table_strings = ['users', 'restaurants', 'menus', 'menu_items', 'reviews', 'carts', 'cart_items', 'transactions', 'locations']
+
+
+EasySeeds::Seeder.create_easy_seed_data(class_names)  #Step 7. 
+
+
+class_image_names = [Restaurant]
+
+```
+
+
+Now, lets say that you messed up on your table somehow. You need to reseed again.
+
+9. When deleteing items from your tables, you generally want to go in the other direction: items with foreign keys first, items with foreign keys point to it last. Effectively, this is what EasySeeds::Destroy.destroy_tables() does. Your file should look something like this:
+
+```Ruby
+require 'easy_seeds/easy_seeds'
+
+class_names = [User, Restaurant, Menu, MenuItem, Review, Cart, CartItem, Transaction, Location]  #Step 6.
+table_strings = ['users', 'restaurants', 'menus', 'menu_items', 'reviews', 'carts', 'cart_items', 'transactions', 'locations']
+
+EasySeeds::Destroy.destroy_tables(class_names, table_strings) 
+
+EasySeeds::Seeder.create_easy_seed_data(class_names)
+```
+
 
 ## CSV Seed_Files Setup
 
