@@ -50,7 +50,8 @@ table_strings = ['users', 'restaurants', 'menus', 'menu_items', 'reviews', 'cart
 7. At the bottom of your your seeds.rb file call EasySeeds::Seeder.create_easy_seed_data(class_names)
 ```Ruby
 EasySeeds::Seeder.create_easy_seed_data(class_names) 
-
+```
+ 
 8. Refer to the example included in ./demo/db if you get stuck! For convenience, heres what your file should look like:
 
 ```Ruby
