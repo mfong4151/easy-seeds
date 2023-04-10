@@ -32,7 +32,7 @@ gem 'easy_seeds'
 ```Ruby
 require 'easy_seeds/easy_seeds'
 ```
-6a. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seed_files or /db/seed_image_files. The reason for this is because Rails is largely agnostic as to what order you want your seed files to be loaded in. Generally you should seed the folders with items that don't have foreign keys first. 
+6. Initialize an array of class_names following the order your seed CSVs are arranged in /db/seed_files or /db/seed_image_files. The reason for this is because Rails is largely agnostic as to what order you want your seed files to be loaded in. Generally you should seed the folders with items that don't have foreign keys first. 
 
 ```Ruby
 ##Initialize array members in order we want things to be seeded. There is a foreign key on menus pointing to restaurants, so we seed restairamts first
@@ -40,7 +40,7 @@ require 'easy_seeds/easy_seeds'
 class_names = [User, Restaurant, Menu, MenuItem, Review, Cart, CartItem, Transaction, Location]
 ```
 
-6b. Now, intialize a list of strings that are lowercase, plural versions of their table counterpart. These should follow the same order:
+ Now, intialize a list of strings that are lowercase, plural versions of their table counterpart. These should follow the same order:
 
 ```Ruby
 table_strings = ['users', 'restaurants', 'menus', 'menu_items', 'reviews', 'carts', 'cart_items', 'transactions', 'locations']
